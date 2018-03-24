@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+  <!-- ClusterConnectionParameters позволяет указывать параметры PowerShell, используемые при подключении к кластеру Service Fabric.
+       Допустимыми параметрами являются любые принимаемые командлетом Connect-ServiceFabricCluster.
+       
+       Для удаленного кластера необходимо указать соответствующие ему параметры.
+         Например: <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />
+
+       Пример параметров для кластера, безопасность в котором обеспечивается сертификатами:
+       <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
+                                    X509Credential="true"
+                                    ServerCertThumbprint="0123456789012345678901234567890123456789"
+                                    FindType="FindByThumbprint"
+                                    FindValue="9876543210987654321098765432109876543210"
+                                    StoreLocation="CurrentUser"
+                                    StoreName="My" />
+
+       Пример параметров для кластера, безопасность в котором обеспечивается при помощи Azure Active Directory (AAD):
+       <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
+                                    AzureActiveDirectory="true"
+                                    ServerCertThumbprint="0123456789012345678901234567890123456789" />
+  -->
+  <ClusterConnectionParameters ConnectionEndpoint="sfopenhack.westeurope.cloudapp.azure.com:19000" X509Credential="true" ServerCertThumbprint="D855F7DBF237E278563547E8FE2294DD3D532487" FindType="FindByThumbprint" FindValue="D855F7DBF237E278563547E8FE2294DD3D532487" StoreLocation="CurrentUser" StoreName="My" />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+  <CopyPackageParameters CompressPackage="true" />
+  <UpgradeDeployment Mode="UnmonitoredAuto" Enabled="true">
+    <Parameters Force="True" />
+  </UpgradeDeployment>
+</PublishProfile>
